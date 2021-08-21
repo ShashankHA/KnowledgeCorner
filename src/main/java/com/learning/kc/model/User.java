@@ -5,9 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 
 @Entity
 @Table(name="Person")
@@ -21,14 +20,16 @@ public class User {
     private Long usedId;
 
     @NotNull
-    String userName;
+    @NotBlank
+    private String userName;
 
     @NotNull
-    String password;
+    @NotBlank
+    private String password;
 
-    @NotNull
-    @Email
-    String email;
+    @NotNull(groups = RegistrationInfo.class)
+    @Email(message = "Invalid Email Id")
+    private String email;
 
     public Long getUsedId() {
         return usedId;

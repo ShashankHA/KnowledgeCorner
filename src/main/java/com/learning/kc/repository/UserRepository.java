@@ -8,5 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 public interface UserRepository extends JpaRepository<User,Long> {
 
     @Query("select count(*) from User u where u.userName = ?1")
-    public Long getCount(String name);
+     Long getCount(String name);
+
+    @Query("select password from User u where u.userName = ?1")
+     String getPassword(String userName);
 }

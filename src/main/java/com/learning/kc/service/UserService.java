@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     public User register(User user){
         return userRepository.save(user);
     }
@@ -18,6 +18,11 @@ public class UserService {
     public boolean isUserExists(String name){
         Long count = userRepository.getCount(name);
         return count!=0;
+    }
+
+    public boolean doLogin(User user){
+        String actaulPassword = userRepository.getPassword(user.getUserName());
+        return actaulPassword.equals(user.getPassword());
     }
 
 }
