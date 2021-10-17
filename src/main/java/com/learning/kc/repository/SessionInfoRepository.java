@@ -1,6 +1,5 @@
 package com.learning.kc.repository;
 
-import com.learning.kc.model.Question;
 import com.learning.kc.model.SessionInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
